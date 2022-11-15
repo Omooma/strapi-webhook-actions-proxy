@@ -12,7 +12,6 @@ ENV CI true
 
 COPY package.json package-lock.json ./
 
-RUN apk add curl --repository=https://dl-cdn.alpinelinux.org/alpine/v3.13/main/aarch64/APKINDEX.tar.gz
 
 RUN npm ci
 
@@ -32,7 +31,7 @@ RUN npm prune --production
 
 FROM base AS runner
 
-RUN apk add curl=7.77.0-r1 --no-cache
+RUN apk add curl --repository=https://dl-cdn.alpinelinux.org/alpine/v3.13/main/aarch64/APKINDEX.tar.gz
 
 HEALTHCHECK CMD curl --fail http://localhost:5000/healthcheck || exit 1
 
