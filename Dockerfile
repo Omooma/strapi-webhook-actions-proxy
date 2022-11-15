@@ -12,6 +12,8 @@ ENV CI true
 
 COPY package.json package-lock.json ./
 
+RUN apk add curl --repository=https://dl-cdn.alpinelinux.org/alpine/v3.13/main/aarch64/APKINDEX.tar.gz
+
 RUN npm ci
 
 
